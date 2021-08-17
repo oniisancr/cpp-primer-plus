@@ -1,16 +1,26 @@
 #include<iostream>
-#include<array>
+#include<string>
+struct CandyBar{
+	std::string brand;
+	float weight;
+	int calorie;
+};
 int main()
 {
 	using namespace std;
-	array<float,3> scores;
-	float sum=0;
-	cout<<"enter 3 scores: ";
-	cin>>scores[0]>>scores[1]>>scores[2];
-	for(auto x:scores)	//C++11基于范围的for循环 auto类型推断，也可以用迭代器指针
+	CandyBar *snack=new CandyBar[3]{	//c++11 大括号初始化
+		{"Mocha Munch",2.3,350},
+		{"b1",2.4,333},
+		{"b2",2.3,444}
+	};
+	int i;
+	for(i=0;i<3;i++)
 	{
-		sum+=x;
+		cout<<"Brand: "<<snack[i].brand<<endl;
+		cout<<"Weight: "<<snack[i].weight<<endl;
+		cout<<"Calorie: "<<snack[i].calorie<<endl;
+	
 	}
-	cout<<"average: "<<sum/scores.size()<<endl;
+	delete [] snack;
 	return 0;
 }
